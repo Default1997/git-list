@@ -50,12 +50,15 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '' => 'git-user/index', 
-                '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],
         ],
-        
+        'mycomponent' => [
+            'class' => 'app\components\ApiComponent',
+            'token' => 'Bearer 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'
+        ],
     ],
     'params' => $params,
+    
 ];
 
 if (YII_ENV_DEV) {

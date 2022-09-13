@@ -16,14 +16,14 @@ class m220908_063344_repository extends Migration
             'user_id' => $this->integer()->notNull(),
             'name' => $this->string(100)->notNull()->unique(),
             'link' => $this->string(400)->notNull(),
-            'updated_at' => $this->string(100)->notNull(),
+            'updated_at' => $this->integer()->notNull(),
             
         ], $tableOptions);
  
         $this->createIndex(
-            'idx-git_user-user_id',
-            '{{git_user}}',
-            'id'
+            'idx-repository-user_id',
+            'repository',
+            'user_id'
         );
 
         $this->addForeignKey(
@@ -47,6 +47,11 @@ class m220908_063344_repository extends Migration
         $this->dropForeignKey(
             'FK_repo',
             'git_user'
+        );
+
+        $this->dropIndex(
+            'idx-git_user-user_id',
+            'post'
         );
     }
 

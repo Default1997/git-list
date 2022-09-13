@@ -15,8 +15,14 @@ class m220907_100053_git_user extends Migration
     {
         $this->createTable('git_user', [
             'id' => $this->primaryKey(),
-            'username' => $this->string()->notNull()->unique(),
+            'username' => $this->string(100)->notNull()->unique(),
         ], $tableOptions);
+
+        $this->createIndex(
+            'idx-git_user-id',
+            'git_user',
+            'id'
+        );
     }
 
     /**

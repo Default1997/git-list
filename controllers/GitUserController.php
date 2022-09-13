@@ -42,7 +42,8 @@ class GitUserController extends Controller
         $searchModel = new GitUserSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
-        $list = Repository::getLastRepositories();
+        $repository = new Repository();
+        $list = $repository->getLastRepositories();
 
         return $this->render('index', [
             'searchModel' => $searchModel,

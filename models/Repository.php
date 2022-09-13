@@ -32,8 +32,8 @@ class Repository extends \yii\db\ActiveRecord
         return [
             [['user_id', 'name', 'link', 'updated_at'], 'required'],
             [['user_id', 'updated_at'], 'integer'],
-            [['updated_at'], 'string'],
             [['name', 'link'], 'string', 'max' => 200],
+            [['name'], 'unique'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => GitUser::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -57,7 +57,7 @@ class Repository extends \yii\db\ActiveRecord
      * @return \yii\db\ActiveQuery
      */
 
-    public static function getLastRepositories()
+    public function getLastRepositories()
     {
         return Repository::find()->orderBy(['updated_at' => SORT_DESC])->limit(10)->all();
     }

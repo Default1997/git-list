@@ -3,7 +3,9 @@
 namespace app\commands;
 
 use yii\console\Controller;
-use app\models\GitUser;
+// use app\models\GitUser;
+use yii;
+// use app\components\mycomponent;
 
 /**
  * Check controller
@@ -11,11 +13,7 @@ use app\models\GitUser;
 class CheckController extends Controller {
 
     public function actionIndex() {
-        GitUser::checkUpdate();
-    }
-
-    public function actionMail($to) {
-        echo "Sending mail to " . $to;
+        Yii::$app->mycomponent->checkUpdate();
     }
 
 }
