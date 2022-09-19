@@ -14,7 +14,7 @@ $config = [
         '@tests' => '@app/tests',
     ],
     'components' => [
-        'mycomponent' => [
+        'apiComponent' => [
             'class' => 'app\components\ApiComponent'
         ],
         'cache' => [

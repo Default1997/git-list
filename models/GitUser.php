@@ -57,6 +57,12 @@ class GitUser extends \yii\db\ActiveRecord
         return $this->hasMany(Repository::class, ['user_id' => 'id']);
     }
 
+    /**
+     * @param mixed $insert
+     * @param array $changedAttributes
+     * @return $insert $changedAttributes unchanged
+     * Добавление информации о репозиториях после добавления нового пользователя
+     */
     public function afterSave($insert, $changedAttributes)
     {
         $transaction = Yii::$app->db->beginTransaction();
@@ -68,14 +74,14 @@ class GitUser extends \yii\db\ActiveRecord
                 Repository::deleteAll(['user_id' => $exist->id]);
             }
 
-            $response = Yii::$app->mycomponent->getResponse($this->username);     
+            $response = Yii::$app->apiComponent->getResponse($this->username);     
 
             if (!isset($response->data[0])) {
                 throw new NotFoundHttpException('Пользователя не существует на GitHub или у него нет публичных репозиториев');
             }
 
             foreach ($response->data as $repo) {
-                Yii::$app->mycomponent->addRepository($repo, $this->id);
+                Yii::$app->addRepoComponent->addRepository($repo, $this->id);
             }
             
             $transaction->commit();

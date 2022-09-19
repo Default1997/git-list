@@ -57,6 +57,10 @@ class Repository extends \yii\db\ActiveRecord
      * @return \yii\db\ActiveQuery
      */
 
+     /**
+     * Поиск последних 10-ти обновленных репозиториев
+     * @return object
+     */
     public function getLastRepositories()
     {
         return Repository::find()->orderBy(['updated_at' => SORT_DESC])->limit(10)->all();

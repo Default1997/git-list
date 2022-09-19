@@ -52,9 +52,15 @@ $config = [
                 '' => 'git-user/index', 
             ],
         ],
-        'mycomponent' => [
+        'apiComponent' => [
             'class' => 'app\components\ApiComponent',
-            'token' => 'Bearer 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'
+            'token' => 'Bearer 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'
+        ],
+        'addRepoComponent' => [
+            'class' => 'app\components\AddRepoComponent'
+        ],
+        'checkComponent' => [
+            'class' => 'app\components\CheckComponent'
         ],
     ],
     'params' => $params,

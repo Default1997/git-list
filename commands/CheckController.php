@@ -11,9 +11,12 @@ use yii;
  * Check controller
  */
 class CheckController extends Controller {
+    /**
+     * Запуск метода для периодической проверки
+     */
 
     public function actionIndex() {
-        Yii::$app->mycomponent->checkUpdate();
+        Yii::$app->checkComponent->checkUpdate();
     }
 
 }

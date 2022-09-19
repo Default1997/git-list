@@ -34,7 +34,7 @@ class GitUserController extends Controller
 
     /**
      * Lists all GitUser models.
-     *
+     * Загрузка главной страницы со списком последних 10-ти обновленных репозиториев пользователей добавленных в БД
      * @return string
      */
     public function actionIndex()

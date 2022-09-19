@@ -21,9 +21,9 @@ class m220908_063344_repository extends Migration
         ], $tableOptions);
  
         $this->createIndex(
-            'idx-repository-user_id',
+            'idx-repository-updated_at',
             'repository',
-            'user_id'
+            'updated_at'
         );
 
         $this->addForeignKey(
